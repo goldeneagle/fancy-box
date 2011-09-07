@@ -233,6 +233,21 @@
       _process_inline();
       break;
 
+    case 'deferred':
+      busy = false;
+      $.fancybox.showActivity();
+      selectedOpts.promise
+        .then(
+          function (data) {
+            tmp.html( data );
+            _process_inline();
+          })
+        .fail(
+          function () {
+            _error();
+          });
+      return;
+
     case 'ajax':
       busy = false;
 
