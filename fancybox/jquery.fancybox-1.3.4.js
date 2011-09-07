@@ -236,8 +236,11 @@
     case 'deferred':
       busy = false;
       $.fancybox.showActivity();
-      selectedOpts.promise
-        .then(
+      var promise = selectedOpts.promise;
+      if ((typeof promise) == "function") {
+        promise = promise();
+      }
+      promise.then(
           function (data) {
             tmp.html( data );
             _process_inline();
