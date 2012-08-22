@@ -62,6 +62,8 @@
   },
 
   _start = function() {
+    $.fancybox.init();
+
     var obj = selectedArray[ selectedIndex ],
     href, 
     type, 
