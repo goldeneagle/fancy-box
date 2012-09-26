@@ -240,7 +240,7 @@
       $.fancybox.showActivity();
       var promise = selectedOpts.promise;
       if ((typeof promise) == "function") {
-        promise = promise();
+        promise = promise.apply(this);
       }
       promise.then(
           function (data) {
@@ -836,7 +836,7 @@
           selectedIndex = selectedArray.index( this );
         }
 
-        _start();
+      _start.apply(this);
 
         return false;
       });
